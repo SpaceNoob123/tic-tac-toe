@@ -1,4 +1,6 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
+using System.Reflection.Emit;
 using System.Windows.Forms;
 
 namespace tic_tac_toe
@@ -33,12 +35,13 @@ namespace tic_tac_toe
             this.ClientSize = new System.Drawing.Size(600, 600);
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.Text = "Tic-Tac-Toe";
-
-
+            int player = 1;
+            
 
             //Button left Top
             btlefttop = new Button();
             btlefttop.Text = "";
+            btlefttop.Click += button1_Click;
             btlefttop.ForeColor = Color.Green;
             btlefttop.Size = new Size(90, 100);
             btlefttop.Location = new Point(150, 150);
@@ -50,6 +53,7 @@ namespace tic_tac_toe
             //Button right Top
             btrighttop = new Button();
             btrighttop.Text = "";
+            btrighttop.Click += button1_Click;
             btrighttop.ForeColor = Color.Green;
             btrighttop.Size = new Size(90, 100);
             btrighttop.Location = new Point(350, 150);
@@ -61,6 +65,7 @@ namespace tic_tac_toe
             //Button Top
             bttop = new Button();
             bttop.Text = "";
+            bttop.Click += button1_Click;
             bttop.ForeColor = Color.Green;
             bttop.Size = new Size(90, 100);
             bttop.Location = new Point(250, 150);
@@ -72,6 +77,7 @@ namespace tic_tac_toe
             //Button Left
             btleft = new Button();
             btleft.Text = "";
+            btleft.Click += button1_Click;
             btleft.ForeColor = Color.Green;
             btleft.Size = new Size(90, 100);
             btleft.Location = new Point(150, 260);
@@ -83,6 +89,7 @@ namespace tic_tac_toe
             //Button Center
             btcenter = new Button();
             btcenter.Text = "";
+            btcenter.Click += button1_Click;
             btcenter.ForeColor = Color.Green;
             btcenter.Size = new Size(90, 100);
             btcenter.Location = new Point(250, 260);
@@ -94,6 +101,7 @@ namespace tic_tac_toe
             //Button Right
             btright = new Button();
             btright.Text = "";
+            btright.Click += button1_Click;
             btright.ForeColor = Color.Green;
             btright.Size = new Size(90, 100);
             btright.Location = new Point(350, 260);
@@ -105,6 +113,7 @@ namespace tic_tac_toe
             //Button bottom Left
             btbottomleft = new Button();
             btbottomleft.Text = "";
+            btbottomleft.Click += button1_Click;
             btbottomleft.ForeColor = Color.Green;
             btbottomleft.Size = new Size(90, 100);
             btbottomleft.Location = new Point(150, 370);
@@ -116,6 +125,7 @@ namespace tic_tac_toe
             //Button bottom
             btbottom = new Button();
             btbottom.Text = "";
+            btbottom.Click += button1_Click;
             btbottom.ForeColor = Color.Green;
             btbottom.Size = new Size(90, 100);
             btbottom.Location = new Point(250, 370);
@@ -127,12 +137,31 @@ namespace tic_tac_toe
             //Button bottom right
             btbottomright = new Button();
             btbottomright.Text = "";
+            btbottomright.Click += button1_Click;
             btbottomright.ForeColor = Color.Green;
             btbottomright.Size = new Size(90, 100);
             btbottomright.Location = new Point(350, 370);
             btbottomright.BackColor = Color.White;
             btbottomright.Font = new Font("Times New Roman", 13, FontStyle.Bold | FontStyle.Italic);
 
+
+
+            void button1_Click(object sender, EventArgs e)
+            {
+                switch (player)
+                {
+                    case 1:
+                        sender.GetType().GetProperty("Text").SetValue(sender, "x");
+                        player = 0;
+                        break;
+                    case 0:
+                        sender.GetType().GetProperty("Text").SetValue(sender, "o");
+                        player = 1;
+                        break;
+                }
+                sender.GetType().GetProperty("Enabled").SetValue(sender, false);
+                
+            }
 
 
             this.Controls.Add(btlefttop);
