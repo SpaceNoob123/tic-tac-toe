@@ -160,8 +160,82 @@ namespace tic_tac_toe
                         break;
                 }
                 sender.GetType().GetProperty("Enabled").SetValue(sender, false);
-                
+                Check_win();
             }
+
+
+
+            void Check_win()
+            {
+                //Horizontal
+                if (btlefttop.Text == bttop.Text && bttop.Text == btrighttop.Text)
+                {
+                    if (btlefttop.Text != "")
+                    {
+                        MessageBox.Show("Вы победили!");
+                        return;
+                    }
+                }
+                if (btleft.Text == btcenter.Text && btcenter.Text == btright.Text)
+                {
+                    if (btleft.Text != "")
+                    {
+                        MessageBox.Show("Вы победили!");
+                        return;
+                    }
+                }
+                if (btbottomleft.Text == btbottom.Text && btbottom.Text == btbottomright.Text)
+                {
+                    if (btbottomleft.Text != "")
+                    {
+                        MessageBox.Show("Вы победили!");
+                        return;
+                    }
+                }
+                //Vertical
+                if (btlefttop.Text == btleft.Text && btleft.Text == btbottomleft.Text)
+                {
+                    if (btlefttop.Text != "")
+                    {
+                        MessageBox.Show("Вы победили!");
+                        return;
+                    }
+                }
+                if (bttop.Text == btcenter.Text && btcenter.Text == btbottom.Text)
+                {
+                    if (bttop.Text != "")
+                    {
+                        MessageBox.Show("Вы победили!");
+                        return;
+                    }
+                }
+                if (btrighttop.Text == btright.Text && btright.Text == btbottomright.Text)
+                {
+                    if (btrighttop.Text != "")
+                    {
+                        MessageBox.Show("Вы победили!");
+                        return;
+                    }
+                }
+                //Diagonal
+                if (btlefttop.Text == btcenter.Text && btcenter.Text == btbottomright.Text)
+                {
+                    if (btlefttop.Text != "")
+                    {
+                        MessageBox.Show("Вы победили!");
+                        return;
+                    }
+                }
+                if (btbottomleft.Text == btcenter.Text && btcenter.Text == btrighttop.Text)
+                {
+                    if (btbottomleft.Text != "")
+                    {
+                        MessageBox.Show("Вы победили!");
+                        return;
+                    }
+                }
+            }
+            
 
 
             this.Controls.Add(btlefttop);
